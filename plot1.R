@@ -12,8 +12,6 @@ summary(PM25)
 TotalByYear <- with(PM25, tapply(Emissions, year, sum))
 
 barplot(TotalByYear, main = "Total PM25 Emission by Year", 
-    xlab = "Year", ylab = "Total PM25")
+        xlab = "Year", ylab = "Total PM25")
 
-#dev.copy(png, file = "plot1.png")
-#dev.off()
-
+savePlot("plot1.png")

@@ -10,15 +10,14 @@ summary(PM25)
 
 # Chose the data, for Baltimore City, Maryland
 # by  (fips == "24510") 
-subsetPM25 <- subset(PM25, PM25$fips=="24510")
+subsetPM25 <- subset(PM25, PM25$fips=="24510", select=c(Emissions,year))
 
 # sum Emissions group by year
 TotalByYear <- with(subsetPM25, tapply(Emissions, year, sum))
 
 barplot(TotalByYear, 
-    main = "Total PM25 Emission by Year\n in Baltimore City, Maryland", 
-    xlab = "Year", ylab = "Total PM25")
+        main = "Total PM25 Emission by Year\n in Baltimore City, Maryland", 
+        xlab = "Year", ylab = "Total PM25")
 
-#dev.copy(png, file = "plot2.png")
-#dev.off()
-
+rm(subsetPM25)
+savePlot("plot2.png")
